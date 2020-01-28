@@ -1,9 +1,9 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-module.exports = db => {
-  router.get("/days", (request, response) => {
-    db.query(
-      `
+module.exports = (db) => {
+	router.get('/days', (request, response) => {
+		db.query(
+			`
       SELECT
         days.id,
         days.name,
@@ -16,10 +16,10 @@ module.exports = db => {
       GROUP BY days.id
       ORDER BY days.id
     `
-    ).then(({ rows: days }) => {
-      response.json(days);
-    });
-  });
+		).then(({ rows: days }) => {
+			response.json(days);
+		});
+	});
 
-  return router;
+	return router;
 };
